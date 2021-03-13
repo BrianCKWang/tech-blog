@@ -2,20 +2,6 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-// router.get('/', (req, res) => {
-//   res.render('homepage', {
-//     id: 1,
-//     post_url: 'https://handlebarsjs.com/guide/',
-//     title: 'Handlebars Docs',
-//     created_at: new Date(),
-//     vote_count: 10,
-//     comments: [{}, {}],
-//     user: {
-//       username: 'test_user'
-//     }
-//   });
-// });
-
 router.get('/', (req, res) => {
   console.log(req.session);
   Post.findAll({
@@ -23,8 +9,7 @@ router.get('/', (req, res) => {
       'id',
       'post_url',
       'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      'created_at'
     ],
     include: [
       {
@@ -66,21 +51,14 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.get('/post/:id', (req, res) => {
-//   const post = {
-//     id: 1,
-//     post_url: 'https://handlebarsjs.com/guide/',
-//     title: 'Handlebars Docs',
-//     created_at: new Date(),
-//     vote_count: 10,
-//     comments: [{}, {}],
-//     user: {
-//       username: 'test_user'
-//     }
-//   };
-
-//   res.render('single-post', { post });
-// });
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  
+  res.render('signup');
+});
 
 router.get('/post/:id', (req, res) => {
   Post.findOne({
@@ -91,8 +69,7 @@ router.get('/post/:id', (req, res) => {
       'id',
       'post_url',
       'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      'created_at'
     ],
     include: [
       {

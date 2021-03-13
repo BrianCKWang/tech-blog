@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Vote } = require("../../models");
+const { User, Post} = require("../../models");
 const withAuth = require('../../utils/auth');
 
 // GET /api/users
@@ -39,12 +39,6 @@ router.get('/:id', (req, res) => {
           model: Post,
           attributes: ['title']
         }
-      },
-      {
-        model: Post,
-        attributes: ['title'],
-        through: Vote,
-        as: 'voted_posts'
       }
     ]
   })
@@ -64,14 +58,13 @@ router.get('/:id', (req, res) => {
 // POST /api/users
 
 router.post('/', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  // expects {username: 'Lernantino', password: 'password1234'}
   // INSERT INTO users
-  //   (username, email, password)
+  //   (username, password)
   // VALUES
   //   ("Lernantino", "lernantino@gmail.com", "password1234");
   User.create({
     username: req.body.username,
-    email: req.body.email,
     password: req.body.password
   })
   .then(dbUserData => {
@@ -90,14 +83,14 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+  // expects {username: 'lernantino', password: 'password1234'}
   User.findOne({
     where: {
-      email: req.body.email
+      username: req.body.username
     }
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'No user with that username!' });
       return;
     }
 
@@ -135,11 +128,11 @@ router.post('/logout', (req, res) => {
 
 // PUT /api/users/1
 router.put('/:id', withAuth, (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  // expects {username: 'Lernantino', password: 'password1234'}
   // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
 
   // UPDATE users
-  // SET username = "Lernantino", email = "lernantino@gmail.com", password = "newPassword1234"
+  // SET username = "Lernantino", password = "newPassword1234"
   // WHERE id = 1;
   User.update(req.body, {
     individualHooks: true,

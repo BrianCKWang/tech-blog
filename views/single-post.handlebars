@@ -4,7 +4,7 @@
     <span>({{format_url post.post_url}})</span>
   </div>
   <div class="meta">
-    {{post.vote_count}} {{format_plural "point" post.vote_count}} by {{post.user.username}} on
+    By {{post.user.username}} on
     {{post.created_at}}
     |
     <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
@@ -18,7 +18,6 @@
 
   <div>
     <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
   </div>
 </form>
 {{/if}}
@@ -27,5 +26,4 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/upvote.js"></script>
 {{/if}}
