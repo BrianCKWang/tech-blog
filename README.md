@@ -1,6 +1,6 @@
 # tech-blog
 ## Description
-To program a RESTful backend api suite for e-commerce database utilizing:
+To program a CMS-style blog site with user authentication, posting and commenting functionality utilizing:
   - Javascript, 
   - Express JS,
   - Express-handlebars,
@@ -10,7 +10,7 @@ To program a RESTful backend api suite for e-commerce database utilizing:
   - and connect-session-sequelize.
 Tested with Insomnia Core and deployed to Heroku
 
-![main pic](https://github.com/BrianCKWang/e-commerce-backend/blob/main/public/img/main-01.png)
+![main pic](https://github.com/BrianCKWang/tech-blog/blob/main/public/img/main-01.png)
 
 ## Table of Contents
 * [Installation](#installation)
