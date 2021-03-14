@@ -11,7 +11,7 @@ router.get('/', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'post_url',
+      'post_content',
       'title',
       'created_at'
     ],
@@ -48,7 +48,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'post_url',
+      'post_content',
       'title',
       'created_at'
     ],
@@ -62,7 +62,10 @@ router.get('/edit/:id', withAuth, (req, res) => {
     .then(dbPostData => {
       // serialize data before passing to template
       const post = dbPostData.get({ plain: true });
-      res.render('edit-post', { post, loggedIn: true });
+      res.render('edit-post', { 
+        post, 
+        loggedIn: true 
+      });
     })
     .catch(err => {
       console.log(err);

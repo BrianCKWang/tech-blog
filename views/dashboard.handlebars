@@ -1,4 +1,4 @@
-<section>
+<section class="new-post-section">
   <h2>Create New Post</h2>
 
   <form class="new-post-form">
@@ -7,11 +7,15 @@
       <input type="text" id="post-title" name="post-title" />
     </div>
     <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <label for="post-content">Content</label>
+      <textarea id="post-content" name="post-content" cols="70" rows="5"></textarea>
     </div>
     <button type="submit" class="btn">Create</button>
+    <button type="button" class="discard-post-btn">Discard</button>
   </form>
+</section>
+<section class="add-new-post-section">
+  <button type="button" class="create-post-btn">Add New Post</button>
 </section>
 
 {{#if posts.length}}
@@ -26,6 +30,11 @@
     {{/each}}
   </ol>
 </section>
+{{else}}
+<section>
+  <h2>You have no posts.</h2>
+</section>
 {{/if}}
 
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/discard-post.js"></script>
