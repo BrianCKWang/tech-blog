@@ -9,10 +9,10 @@ const seedAll = async () => {
   console.log('\n----- DATABASE SYNCED -----\n');
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
-  await seedPosts();
-  console.log('\n----- POSTS SEEDED -----\n');
-  await seedComments();
-  console.log('\n----- COMMNENTS SEEDED -----\n');
+  // await seedPosts();
+  // console.log('\n----- POSTS SEEDED -----\n');
+  // await seedComments();
+  // console.log('\n----- COMMNENTS SEEDED -----\n');
 
   process.exit(0);
 };
