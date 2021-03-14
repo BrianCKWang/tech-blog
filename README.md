@@ -8,7 +8,7 @@ To program a CMS-style blog site with user authentication, posting and commentin
   - MySQL2, 
   - bcrypt,
   - and connect-session-sequelize.
-Tested with Insomnia Core and deployed to Heroku
+Tested with Insomnia Core and deployed to Heroku. Idle user will be automatically logged out after 15 minutes.
 
 ![main pic](https://github.com/BrianCKWang/tech-blog/blob/main/public/img/main-01.png)
 
@@ -30,8 +30,13 @@ Tested with Insomnia Core and deployed to Heroku
 
 ## Usage 
   
-  Visit live website: 
-  - [Link](https://brianckwang-tech-blog.herokuapp.com/)
+  - Visit live website: [Tech Blog Link](https://brianckwang-tech-blog.herokuapp.com/)
+  - Click on "Login/Sign Up" in the navigation to log in to existing account or sign up a new account.
+  - When logged int, click on Dashboard to visit the user's dashboard.
+  - Click on "Add New Post" to fill out the titla and content of new post.
+  - Click on "Create" to create new post. 
+  - To edit post, click on the post title in dashboard and edit accordingly. Click on "Delete post" if user wish to do so.
+  - To comment on a post, click on the post title in home page to enter single post mode. Fill in comment textarea and click on "Submit" to submit comment.
   
 
 ## Contribution Guidelines
@@ -51,5 +56,3 @@ Where can I reach out to you for questions?
 This project is licensed under:
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-
